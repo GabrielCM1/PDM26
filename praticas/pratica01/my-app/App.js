@@ -8,7 +8,7 @@ export default function App() {
     <View style={styles.container}>
       <Text> {titulo_padrao}</Text>
       <Text> {titulo} </Text>
-      <Button title="Clique aqui" />
+      <Button title="Clique aqui"/>
       <StatusBar style="auto" />
     </View>
   );
