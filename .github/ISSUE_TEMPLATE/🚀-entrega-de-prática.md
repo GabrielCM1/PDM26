@@ -16,14 +16,14 @@ assignees: ''
 ## ✅ Checklist de Desenvolvimento
 Antes de abrir o seu Pull Request, certifique-se de que cumpriu todos os passos abaixo. Marque com um `x` os itens concluídos:
 
-- [x] Criei a branch específica para esta prática (ex: `feature/praticaXX`).
-- [x] Acessei a pasta da prática no terminal.
-- [x] Instalei as dependências corretamente (`npm install`).
-- [x] Consegui rodar o projeto localmente (`npx expo start`).
-- [x] Testei o aplicativo no meu celular (usando **Expo Go**) ou no emulador.
-- [x] Li as instruções no `README.md` da pasta desta prática e implementei os requisitos solicitados.
-- [x] Meu código não possui erros de sintaxe ou "telas vermelhas" de erro no app.
-- [x] Fiz o commit usando uma mensagem clara e o push para o meu repositório no GitHub.
+- [] Criei a branch específica para esta prática (ex: `feature/praticaXX`).
+- [] Acessei a pasta da prática no terminal.
+- [] Instalei as dependências corretamente (`npm install`).
+- [] Consegui rodar o projeto localmente (`npx expo start`).
+- [] Testei o aplicativo no meu celular (usando **Expo Go**) ou no emulador.
+- [] Li as instruções no `README.md` da pasta desta prática e implementei os requisitos solicitados.
+- [] Meu código não possui erros de sintaxe ou "telas vermelhas" de erro no app.
+- [] Fiz o commit usando uma mensagem clara e o push para o meu repositório no GitHub.
 
 ---
 
