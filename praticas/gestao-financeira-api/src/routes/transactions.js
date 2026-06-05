@@ -6,9 +6,9 @@ const router = Router();
 
 const transactionSchema = z.object({
   description: z.string().min(1),
-  value: z.number(),
+  value: z.coerce.number(),
   date: z.string(),
-  categoryId: z.number(),
+  categoryId: z.coerce.number(),
 });
 
 router.get("/", async (req, res) => {
