@@ -39,21 +39,20 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="add-transactions"
-        options={{
-          title: "Transações",
-          tabBarLabel: "Adicionar",
-          tabBarIcon: () => (
-            <View style={styles.addButton}>
-              <MaterialIcons
-                name="add"
-                size={24}
-                color={colors.primaryContrast}
-              />
-            </View>
-          ),
-        }}
-      />
+  name="add-transactions"
+  options={{
+    title: "Adicionar",
+    tabBarIcon: ({ focused }) => (
+      <View style={styles.addButton}>
+        <MaterialIcons
+          name="add"
+          size={23}
+          color={colors.primaryContrast}
+        />
+      </View>
+    ),
+  }}
+/>
       <Tabs.Screen
         name="summary"
         options={{
@@ -69,20 +68,31 @@ export default function TabsLayout() {
 
 const styles = StyleSheet.create({
   tabBar: {
-    height: 68,
-    paddingTop: 4,
-    paddingBottom: 6,
+    height: 72,
+    paddingTop: 6,
+    paddingBottom: 8,
     backgroundColor: colors.background,
+    borderTopWidth: 1,
+    borderTopColor: "#ddd",
   },
+
+  tabItem: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
   tabLabel: {
     fontSize: 11,
+    marginTop: 2,
   },
+
   addButton: {
+    margin: 20,
     alignItems: "center",
     justifyContent: "center",
-    height: 36,
-    width: 36,
-    borderRadius: 18,
+    height: 25,
+    width: 25,
+    borderRadius: 20,
     backgroundColor: colors.primary,
   },
-})
+});
