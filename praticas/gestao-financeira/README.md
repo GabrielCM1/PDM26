@@ -1,163 +1,75 @@
-# Gestao Financeira
+# Gestão Financeira
 
-Aplicativo mobile de gestao financeira desenvolvido com React Native, Expo e Expo Router. O projeto organiza a base de um app chamado Money, com navegacao por abas, telas principais para controle financeiro e uma identidade visual centralizada por constantes de cor.
+Aplicativo mobile criado com Expo Router e React Native para registrar transações, persistir dados localmente e acompanhar o resumo financeiro por categoria.
 
-## Sobre o projeto
+## Funcionalidades
 
-O app foi criado como parte das praticas da disciplina de Programacao para Dispositivos Moveis. Nesta etapa, ele implementa a estrutura inicial da aplicacao:
+- Cadastro de transações com descrição, valor, data e categoria.
+- Máscara de moeda em reais.
+- Date picker nativo.
+- Categorias com ícones e cores.
+- Persistência local com AsyncStorage.
+- Listagem de transações.
+- Resumo por categoria e saldo geral.
+- Configuração EAS para gerar APK de preview.
 
-- tela de transacoes;
-- tela para adicionar transacoes;
-- tela de resumo financeiro;
-- navegacao inferior com tres abas;
-- botao central destacado para cadastro de nova transacao;
-- cabecalho e status bar personalizados com a cor principal do app.
+## Rodando o Projeto
 
-## Tecnologias utilizadas
-
-- React Native
-- Expo
-- Expo Router
-- React Navigation
-- JavaScript
-- TypeScript, usado na configuracao e em hooks gerados pelo template
-- ESLint
-
-## Estrutura principal
-
-```text
-praticas/gestao-financeira/
-|-- app/
-|   |-- _layout.jsx
-|   |-- +not-found.jsx
-|   `-- (tabs)/
-|       |-- _layout.jsx
-|       |-- index.jsx
-|       |-- add-transactions.jsx
-|       `-- summary.jsx
-|-- constants/
-|   `-- colors.js
-|-- hooks/
-|-- scripts/
-|-- app.json
-|-- package.json
-`-- README.md
-```
-
-## Telas
-
-### Transacoes
-
-Arquivo: `app/(tabs)/index.jsx`
-
-Tela inicial do aplicativo, reservada para a listagem das movimentacoes financeiras.
-
-### Adicionar Transacao
-
-Arquivo: `app/(tabs)/add-transactions.jsx`
-
-Tela de cadastro de uma nova transacao. Ela e acessada pela aba central, representada por um botao circular com icone de adicionar.
-
-### Resumo
-
-Arquivo: `app/(tabs)/summary.jsx`
-
-Tela destinada a exibicao de um resumo financeiro, como saldos, categorias ou indicadores do usuario.
-
-## Navegacao
-
-A navegacao e configurada com Expo Router em `app/(tabs)/_layout.jsx`.
-
-As abas disponiveis sao:
-
-- `index`: Transacoes
-- `add-transactions`: Adicionar Transacao
-- `summary`: Resumo
-
-O layout principal fica em `app/_layout.jsx` e registra o grupo `(tabs)` dentro de uma `Stack`, mantendo o cabecalho das abas sob controle do proprio `TabsLayout`.
-
-## Identidade visual
-
-As cores do projeto ficam centralizadas em `constants/colors.js`, facilitando ajustes de tema e padronizacao visual.
-
-Cores principais:
-
-- `primary`: verde principal do app;
-- `primaryContrast`: branco para contraste;
-- `inactive`: cinza usado em abas inativas;
-- `background`: cor de fundo;
-- cores de categorias para renda, alimentacao, casa, educacao e viagem;
-- cores de texto positivo e negativo.
-
-## Como executar
-
-### Pre-requisitos
-
-Antes de iniciar, tenha instalado:
-
-- Node.js em versao LTS;
-- npm;
-- Expo Go no celular, caso queira testar em dispositivo fisico.
-
-### Passos
-
-Entre na pasta do projeto:
-
-```bash
-cd praticas/gestao-financeira
-```
-
-Instale as dependencias:
+Instale as dependências:
 
 ```bash
 npm install
 ```
 
-Inicie o Expo:
+Inicie o projeto:
 
 ```bash
 npm start
 ```
 
-Depois, escolha uma das opcoes exibidas no terminal:
-
-- abrir no Android;
-- abrir no iOS;
-- abrir no navegador;
-- escanear o QR Code com o Expo Go.
-
-## Scripts disponiveis
-
-```bash
-npm start
-```
-
-Inicia o servidor de desenvolvimento do Expo.
+Também é possível abrir diretamente no Android:
 
 ```bash
 npm run android
 ```
 
-Inicia o app no Android.
+## Build Instalável
+
+O arquivo `eas.json` já tem um perfil `preview` configurado para Android com saída em APK. Para vincular o projeto à sua conta Expo e gerar um build:
 
 ```bash
-npm run ios
+npm install -g eas-cli
+eas login
+eas init
+eas build -p android --profile preview
 ```
 
-Inicia o app no iOS.
+O comando `eas init` preenche o `extra.eas.projectId` no `app.json`. Esse valor não deve ser copiado de outro projeto.
 
-```bash
-npm run web
-```
+## Conclusão e Próximos Passos (Projeto 10)
 
-Inicia a versao web.
+Depois desta base, o que mais acelera e consolida o aprendizado e fazer projetos com a sua cara e estudar sob demanda conforme o app pede.
 
-```bash
-npm run lint
-```
+Sugestoes de evolucao para este app:
 
-Executa a verificacao de lint do projeto.
+- Filtros por periodo ou categoria.
+- Edicao e exclusao de transacoes.
+- Graficos de despesas e receitas.
+- Login e sincronizacao com backend.
+- Armazenamento com SQLite.
+- Testes com Jest e React Native Testing Library.
+- Publicacao em loja com EAS Submit.
 
-## Status
+O que estudar a seguir (roadmap):
 
-Projeto em fase inicial, com foco na configuracao da navegacao, criacao das telas base e organizacao visual. As proximas etapas naturais sao implementar o formulario de transacao, armazenar os dados e exibir o resumo financeiro.
+- Estilizacao avancada (ex.: styled-components, NativeWind).
+- Networking (fetch/axios) e integracao com APIs.
+- Recursos nativos (deep linking, animacoes, mapas, notificacoes).
+
+## Links Uteis
+
+- Roadmap React Native: https://roadmap.sh/react-native
+- Tutorial Expo (galeria/camera): https://docs.expo.dev/tutorial/introduction/
+- Expo Docs: https://docs.expo.dev
+- React Native Docs: https://reactnative.dev/docs/components-and-apis
+- EAS Build: https://docs.expo.dev/build/introduction/
