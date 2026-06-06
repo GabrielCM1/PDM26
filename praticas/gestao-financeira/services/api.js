@@ -91,11 +91,19 @@ export const api = {
   listTransactions: () => request("/transactions"),
   createTransaction: (data) =>
     request("/transactions", { method: "POST", body: JSON.stringify(data) }),
-  updateTransaction: (id, data) =>
-    request(`/transactions/${id}`, {
-      method: "PUT",
-      body: JSON.stringify(data),
-    }),
+  async updateTransaction(id, transaction) {
+  const response = await fetch(`${API_URL}/transactions/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(transaction),
+  });
+
+  return handleResponse(response);
+},
   deleteTransaction: (id) =>
     request(`/transactions/${id}`, { method: "DELETE" }),
+  
+  
 }

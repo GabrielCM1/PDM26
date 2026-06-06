@@ -1,3 +1,4 @@
+import MonthYearFilter from "../../components/MonthYearFilter";
 import { useContext, useMemo } from "react"
 import {
   ActivityIndicator,
@@ -44,10 +45,18 @@ function calculateTotals(transactions, categories) {
 }
 
 export default function Summary() {
-  const { categories, loading, transactions } = useContext(MoneyContext)
+  const {
+  categories, 
+  loading,
+  filteredTransactions,
+  selectedMonth,
+  setSelectedMonth,
+  selectedYear,
+  setSelectedYear,
+} = useContext(MoneyContext)
   const totals = useMemo(() => {
-    return calculateTotals(transactions, categories)
-  }, [transactions, categories])
+    return calculateTotals(filteredTransactions, categories)
+  }, [filteredTransactions, categories])
 
   if (loading && categories.length === 0) {
     return (
@@ -61,12 +70,19 @@ export default function Summary() {
     totals.balance >= 0 ? globalStyles.positiveText : globalStyles.negativeText
 
   return (
+    
     <View style={globalStyles.screenContainer}>
+      <MonthYearFilter
+        selectedMonth={selectedMonth}
+        setSelectedMonth={setSelectedMonth}
+        selectedYear={selectedYear}
+        setSelectedYear={setSelectedYear}
+      />
       <ScrollView contentContainerStyle={globalStyles.content}>
         <PieChart
           categories={categories}
           totalsById={totals.totalsById}
-          transactionCount={transactions.length}
+          transactionCount={filteredTransactions.length}
         />
 
         <View style={globalStyles.line} />
