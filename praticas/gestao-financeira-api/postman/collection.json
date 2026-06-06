@@ -1,0 +1,187 @@
+{
+  "info": {
+    "name": "Gestão Financeira API",
+    "description": "Collection para testar os endpoints da API de Gestão Financeira.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "incomeCategoryId",
+      "value": "COLE_AQUI_O_ID_DA_CATEGORIA_INCOME",
+      "type": "string"
+    },
+    {
+      "key": "createdCategoryId",
+      "value": "COLE_AQUI_O_ID_DA_CATEGORIA_CRIADA",
+      "type": "string"
+    },
+    {
+      "key": "createdTransactionId",
+      "value": "COLE_AQUI_O_ID_DA_TRANSACAO_CRIADA",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health-check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/",
+          "host": ["{{baseUrl}}"],
+          "path": [""]
+        }
+      }
+    },
+    {
+      "name": "Listar categorias",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/categories",
+          "host": ["{{baseUrl}}"],
+          "path": ["categories"]
+        }
+      }
+    },
+    {
+      "name": "Criar categoria",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"health\",\n  \"displayName\": \"Saúde\",\n  \"icon\": \"favorite\",\n  \"background\": \"#FFB6B6\",\n  \"isIncome\": false\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/categories",
+          "host": ["{{baseUrl}}"],
+          "path": ["categories"]
+        }
+      }
+    },
+    {
+      "name": "Atualizar categoria",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"displayName\": \"Saúde e Bem-estar\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/categories/{{createdCategoryId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["categories", "{{createdCategoryId}}"]
+        }
+      }
+    },
+    {
+      "name": "Excluir categoria",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/categories/{{createdCategoryId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["categories", "{{createdCategoryId}}"]
+        }
+      }
+    },
+    {
+      "name": "Bloquear exclusão de categoria padrão",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/categories/{{incomeCategoryId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["categories", "{{incomeCategoryId}}"]
+        }
+      }
+    },
+    {
+      "name": "Criar transação",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"description\": \"Salário de outubro\",\n  \"value\": 3500.50,\n  \"date\": \"2026-04-29\",\n  \"categoryId\": \"{{incomeCategoryId}}\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/transactions",
+          "host": ["{{baseUrl}}"],
+          "path": ["transactions"]
+        }
+      }
+    },
+    {
+      "name": "Listar transações",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/transactions",
+          "host": ["{{baseUrl}}"],
+          "path": ["transactions"]
+        }
+      }
+    },
+    {
+      "name": "Excluir transação",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/transactions/{{createdTransactionId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["transactions", "{{createdTransactionId}}"]
+        }
+      }
+    },
+    {
+      "name": "Validar erro de transação",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"description\": \"\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/transactions",
+          "host": ["{{baseUrl}}"],
+          "path": ["transactions"]
+        }
+      }
+    }
+  ]
+}
