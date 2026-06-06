@@ -8,7 +8,7 @@ const transactionSchema = z.object({
   description: z.string().min(1),
   value: z.coerce.number(),
   date: z.string(),
-  categoryId: z.coerce.number(),
+  categoryId: z.string().min(1),
 });
 
 router.get("/", async (req, res) => {
@@ -43,7 +43,7 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
-  const id = Number(req.params.id);
+  const id = req.params.id;
   const data = transactionSchema.partial().parse(req.body);
 
   const transaction = await prisma.transaction.update({
@@ -61,7 +61,7 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const id = Number(req.params.id);
+  const id = req.params.id;
 
   await prisma.transaction.delete({
     where: { id },

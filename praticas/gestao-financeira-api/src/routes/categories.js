@@ -10,11 +10,12 @@ const categorySchema = z.object({
   icon: z.string().min(1),
   background: z.string().min(1),
   isIncome: z.boolean().default(false),
+  isDefault: z.boolean().optional(),
 });
 
 router.get("/", async (req, res) => {
   const categories = await prisma.category.findMany({
-    orderBy: { id: "asc" },
+    orderBy: { createdAt: "asc" },
   });
 
   res.json(categories);
@@ -31,7 +32,7 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
-  const id = Number(req.params.id);
+  const id = req.params.id;
   const data = categorySchema.partial().parse(req.body);
 
   const category = await prisma.category.update({
@@ -43,7 +44,7 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const id = Number(req.params.id);
+  const id = req.params.id;
 
   await prisma.category.delete({
     where: { id },
